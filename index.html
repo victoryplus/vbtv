@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://encouragementglutton.com/79/6d/3e/796d3eed2db65c294beb1b3e99cefb98.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>High School Sports TV | Live Stream</title>
-    <!-- Tailwind CSS CDN -->
+    <title>KHSAA TV | Live Stream</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Montserrat (Ultra Bold) & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
@@ -34,451 +30,142 @@
         }
     </script>
     <style>
-        /* Compressed ultra-bold typography for NFHS Banner style */
         .header-compressed-text {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
             letter-spacing: -0.05em;
         }
-        /* Slow scroll animation for school association marquee logos */
-        @keyframes scrollBadges {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-scroll-badges {
-            animation: scrollBadges 25s linear infinite;
-        }
-        /* Seeker bar progress styling */
-        .seeker-progress {
-            width: 35%;
+        .seeker-progress { width: 35%; }
+        /* Memastikan gambar fit dan tidak terpotong */
+        .object-fit-container {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background-color: #000;
         }
     </style>
 </head>
 <body class="bg-black text-white font-sans overflow-x-hidden min-h-screen pb-safe">
 
-    <!-- === 1. TOP MARQUEE BADGES BAR (School Association Logos Carousel) === -->
-    <div class="w-full bg-[#111111] overflow-hidden py-1.5 border-b border-white/5 relative z-50">
-        <div class="flex whitespace-nowrap animate-scroll-badges items-center space-x-12">
-            
-            <!-- Logo Block (Duplicated for seamless infinite looping) -->
-            <div class="flex items-center space-x-12 text-[10px] font-bold text-gray-400">
-                <span class="flex items-center"><span class="bg-red-600 text-white px-1.5 py-0.5 rounded mr-1.5 text-[8px]">HS</span> HIGH SCHOOL</span>
-                <span class="text-blue-500 font-extrabold">PIAA</span>
-                <span class="text-green-500 font-extrabold">OHSAA</span>
-                <span class="text-yellow-500 font-extrabold">OSAA</span>
-                <span class="text-red-500 font-extrabold">MHSAA</span>
-                <span class="text-indigo-400 font-extrabold">SSAC</span>
-                <span class="text-white font-extrabold">UIL</span>
-                <span class="text-blue-400 font-extrabold">CIF</span>
-                <span class="text-orange-500 font-extrabold">NYSPHSAA</span>
-            </div>
-            
-            <!-- Duplicated Block for Perfect Seamless Loop -->
-            <div class="flex items-center space-x-12 text-[10px] font-bold text-gray-400" aria-hidden="true">
-                <span class="flex items-center"><span class="bg-red-600 text-white px-1.5 py-0.5 rounded mr-1.5 text-[8px]">HS</span> HIGH SCHOOL</span>
-                <span class="text-blue-500 font-extrabold">PIAA</span>
-                <span class="text-green-500 font-extrabold">OHSAA</span>
-                <span class="text-yellow-500 font-extrabold">OSAA</span>
-                <span class="text-red-500 font-extrabold">MHSAA</span>
-                <span class="text-indigo-400 font-extrabold">SSAC</span>
-                <span class="text-white font-extrabold">UIL</span>
-                <span class="text-blue-400 font-extrabold">CIF</span>
-                <span class="text-orange-500 font-extrabold">NYSPHSAA</span>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- === 2. NAVIGATION BAR === -->
-    <nav class="w-full bg-[#0a0a0a] py-3 border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-            <!-- Left Brand Label -->
-            <div class="flex items-center space-x-2">
-                <div class="bg-blue-600 text-white font-montserrat font-black text-xs px-1.5 py-0.5 rounded">
-                    LIVE
-                </div>
-                <span class="font-montserrat font-black text-sm tracking-wide uppercase">HS SPORTS Live</span>
-            </div>
-            
-            <!-- Login Link langsung ke link tujuan -->
-            <a href="javascript:void(0)" onclick="bukaLink()" class="text-xs text-gray-300 hover:text-white font-bold transition-colors cursor-pointer">
-                Login
-            </a>
-        </div>
-    </nav>
-
-    <!-- === 3. HERO BILLBOARD BANNER === -->
-    <section class="bg-[#141414] border-b-2 border-blue-600 py-6 sm:py-8">
+    <!-- HERO BILLBOARD BANNER -->
+    <section class="bg-[#141414] border-b-2 border-blue-600 py-10 mt-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                
-                <!-- Left: Live Status & Main Headline -->
                 <div class="flex items-center space-x-4 sm:space-x-6 text-center md:text-left">
-                    <!-- Red Pulsing Live Indicator Badge -->
                     <div class="bg-hsRed text-white font-montserrat font-black tracking-widest text-xs sm:text-sm px-4 py-2 rounded-md flex items-center shrink-0">
                         <span class="w-2.5 h-2.5 bg-white rounded-full mr-2 animate-ping"></span>
                         LIVE
                     </div>
-                    <!-- Main Title -->
-                    <h2 class="header-compressed-text text-xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-none uppercase">
-                        WATCH HIGH SCHOOL <br class="hidden sm:inline"> SPORTS ONLINE
+                    <h2 class="header-compressed-text text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-none uppercase">
+                        KHSAA TV
                     </h2>
                 </div>
-
-                <!-- Right: Stacked Action Buttons -->
-                <div class="flex flex-col sm:flex-row md:flex-col gap-3 w-full sm:w-auto shrink-0">
-                    
-                    <!-- Subscribe Button langsung ke link -->
-                    <button onclick="bukaLink()" class="w-full sm:w-44 text-center py-2.5 bg-hsRed hover:bg-hsRedHover text-white font-montserrat font-black text-xs uppercase tracking-wider rounded transition-all cursor-pointer">
+                <div class="flex flex-col sm:flex-row md:flex-col gap-3 w-full sm:w-auto">
+                    <button onclick="bukaLink()" class="w-full sm:w-44 py-3 bg-hsRed hover:bg-hsRedHover text-white font-montserrat font-black text-xs uppercase tracking-wider rounded transition-all cursor-pointer">
                         Subscribe Now
                     </button>
-                    
-                    <!-- Log In Button langsung ke link -->
-                    <button onclick="bukaLink()" class="w-full sm:w-44 text-center py-2.5 border border-white text-white font-montserrat font-black text-xs uppercase tracking-wider rounded hover:bg-white/10 transition-all cursor-pointer">
+                    <button onclick="bukaLink()" class="w-full sm:w-44 py-3 border border-white text-white font-montserrat font-black text-xs uppercase tracking-wider rounded hover:bg-white/10 transition-all cursor-pointer">
                         Log In
                     </button>
-
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- === 4. MEDIA PLAYER CONTAINER WITH REGISTER PAYWALL === -->
+    <!-- MEDIA PLAYER CONTAINER -->
     <section class="max-w-5xl mx-auto px-4 pt-8">
-        
         <div class="w-full bg-black rounded-xl overflow-hidden border border-white/10 shadow-2xl flex flex-col">
-            
-            <!-- Video Screen with 16:9 Aspect Ratio -->
-            <div class="relative w-full aspect-video flex flex-col items-center justify-center p-4 sm:p-8 text-center select-none overflow-hidden bg-neutral-950">
+            <div id="playerContainer" class="relative w-full aspect-video flex flex-col items-center justify-center p-4 sm:p-8 text-center bg-neutral-950">
                 
-                <div class="absolute inset-0 z-0">
-                    <img src="hs.jpg" 
-                         alt="Player Background Image" 
-                         class="w-full h-full object-contain object-center opacity-60"
-                         onerror="this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop'">
-                    <div class="absolute inset-0 bg-black/40"></div>
-                </div>
-
-                <!-- Centralized Access Restriction Content (Paywall Gateway) -->
+                <!-- BACKGROUND IMAGE CONTAINER -->
+                <div id="playerBackground" class="hidden absolute inset-0 z-0 bg-cover bg-center brightness-[0.5]"></div>
+                
                 <div class="relative z-10 max-w-lg flex flex-col items-center px-2">
-                    
                     <h3 class="text-sm sm:text-xl lg:text-2xl font-bold text-gray-200 tracking-tight leading-snug">
-                        Sports HS SPORTS Live Is Only Available For Registered Users. 
+                        KHSAA TV is only available for Registered Users. 
                         Create a <span class="text-hsGreen font-extrabold">FREE</span> account to get access to your HD stream
                     </h3>
-                    
-                    <!-- === TIMER LOADING STATE (Disappears after 3 seconds) === -->
-                    <div id="playerTimer" class="mt-6 sm:mt-8 flex flex-col items-center space-y-3">
+                    <div id="playerTimer" class="mt-8 flex flex-col items-center space-y-3">
                         <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-hsGreen"></div>
-                        <p class="text-xs sm:text-sm text-gray-300 font-semibold tracking-wide">
-                            Connecting to Live HD Stream... Please wait <span id="countdownText" class="text-hsGreen font-bold text-sm sm:text-lg">3</span>s
+                        <p class="text-sm text-gray-300 font-semibold">
+                            Connecting... Please wait <span id="countdownText" class="text-hsGreen font-bold">3</span>s
                         </p>
                     </div>
-
-                    <!-- Register Button (Hidden initially, appears after 3s timer - Langsung ke Link) -->
-                    <button id="registerBtn" onclick="bukaLink()" class="hidden mt-6 sm:mt-8 px-6 py-3 sm:px-8 sm:py-4 bg-hsGreen hover:bg-hsGreenHover text-white font-montserrat font-black tracking-wide text-[10px] sm:text-sm uppercase rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg shadow-hsGreen/30 cursor-pointer">
+                    <button id="registerBtn" onclick="bukaLink()" class="hidden mt-8 px-8 py-4 bg-hsGreen hover:bg-hsGreenHover text-white font-montserrat font-black text-sm uppercase rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg shadow-hsGreen/30 cursor-pointer">
                         CREATE A FREE ACCOUNT
                     </button>
-
-                </div>
-
-            </div>
-
-            <!-- === 5. MEDIA CONTROLS BAR === -->
-            <div class="w-full bg-[#111111] border-t border-white/10 px-4 py-3.5 flex flex-row items-center justify-between gap-4">
-                <div class="flex items-center space-x-4 flex-grow">
-                    <button onclick="bukaLink()" class="text-gray-300 hover:text-white transition-colors cursor-pointer">
-                        <i data-lucide="play" class="w-4 h-4 fill-current"></i>
-                    </button>
-                    
-                    <!-- Seek bar juga klik ke link -->
-                    <div onclick="bukaLink()" class="flex-grow bg-gray-800 h-1.5 rounded-full relative overflow-hidden cursor-pointer">
-                        <div class="bg-blue-600 h-full rounded-full seeker-progress"></div>
-                    </div>
-                </div>
-
-                <div class="flex items-center space-x-4 shrink-0">
-                    <div class="hidden sm:flex items-center space-x-2">
-                        <i data-lucide="volume-2" class="w-4 h-4 text-gray-400"></i>
-                        <div class="w-16 bg-gray-800 h-1 rounded-full overflow-hidden">
-                            <div class="bg-white h-full w-4/5"></div>
-                        </div>
-                    </div>
-                    <button onclick="bukaLink()" class="text-gray-400 hover:text-white transition-colors cursor-pointer">
-                        <i data-lucide="maximize" class="w-4 h-4"></i>
-                    </button>
-                    <div class="flex items-center text-[10px] font-bold text-hsRed uppercase tracking-widest bg-hsRed/10 px-2 py-0.5 rounded border border-hsRed/20">
-                        <span class="w-1.5 h-1.5 bg-hsRed rounded-full mr-1.5 animate-pulse"></span>
-                        LIVE
-                    </div>
                 </div>
             </div>
-
+            
+            <div class="w-full bg-[#111111] border-t border-white/10 px-4 py-3.5 flex items-center justify-between gap-4">
+                <button onclick="bukaLink()" class="text-gray-300 hover:text-white"><i data-lucide="play" class="w-4 h-4"></i></button>
+                <div onclick="bukaLink()" class="flex-grow bg-gray-800 h-1.5 rounded-full cursor-pointer overflow-hidden">
+                    <div class="bg-blue-600 h-full seeker-progress"></div>
+                </div>
+                <button onclick="bukaLink()" class="text-gray-400 hover:text-white"><i data-lucide="maximize" class="w-4 h-4"></i></button>
+            </div>
         </div>
-
-        <!-- Banner below video player langsung ke link -->
-        <button onclick="bukaLink()" class="w-full bg-blue-600 hover:bg-blue-700 transition-colors py-3 flex items-center justify-center rounded-b-xl cursor-pointer shadow-lg shadow-blue-500/10 border-b border-x border-white/10 relative z-20">
-            <span class="font-montserrat font-black text-[10px] sm:text-xs text-white tracking-widest uppercase text-center px-4">WATCH LIVE FOR FREE GAME TODAY</span>
+        <button onclick="bukaLink()" class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-b-xl cursor-pointer shadow-lg shadow-blue-500/10">
+            <span class="font-montserrat font-black text-xs text-white tracking-widest uppercase">WATCH LIVE GAME TODAY</span>
         </button>
     </section>
 
-    <!-- === 6. BANNER AD SPACE 1 === -->
+    <!-- AD SPACES -->
+    <section class="max-w-4xl mx-auto px-4 mt-8 space-y-4">
+        <div class="w-full flex items-center justify-center min-h-[50px] border border-dashed border-white/10 rounded-xl text-[9px] text-gray-600 uppercase">AD SPACE</div>
+        <div class="w-full flex items-center justify-center min-h-[50px] border border-dashed border-white/10 rounded-xl text-[9px] text-gray-600 uppercase">AD SPACE</div>
+    </section>
+
+    <!-- DUA KOTAK FOTO TAMBAHAN -->
     <section class="max-w-4xl mx-auto px-4 mt-8">
-        <div class="w-full flex flex-col items-center justify-center min-h-[50px]">
-            <div class="text-[9px] text-gray-600 tracking-widest uppercase border border-dashed border-white/10 px-6 py-4 rounded-xl">
-         <script>
-  atOptions = {
-    'key' : '85ce87d2c92503775761ed4fff3dfb99',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {}
-  };
-</script>
-<script src="https://encouragementglutton.com/85ce87d2c92503775761ed4fff3dfb99/invoke.js"></script>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col gap-3">
+                <div onclick="bukaLink()" class="cursor-pointer border border-white/10 rounded-lg overflow-hidden bg-neutral-900">
+                    <img src="bs1.png" alt="Baseball" class="object-fit-container">
+                </div>
+                <a href="javascript:void(0)" onclick="bukaLink()" class="text-center text-[10px] sm:text-xs font-bold text-gray-300 hover:text-white uppercase transition-colors underline underline-offset-4">
+                    BASEBALL STATE TOURNAMENT 2026
+                </a>
+            </div>
+            <div class="flex flex-col gap-3">
+                <div onclick="bukaLink()" class="cursor-pointer border border-white/10 rounded-lg overflow-hidden bg-neutral-900">
+                    <img src="sf1.png" alt="Softball" class="object-fit-container">
+                </div>
+                <a href="javascript:void(0)" onclick="bukaLink()" class="text-center text-[10px] sm:text-xs font-bold text-gray-300 hover:text-white uppercase transition-colors underline underline-offset-4">
+                    SOFTBALL STATE TOURNAMENT 2026
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- === 7. BANNER AD SPACE 2 === -->
-    <section class="max-w-4xl mx-auto px-4 mt-4">
-        <div class="w-full flex flex-col items-center justify-center min-h-[50px]">
-            <div class="text-[9px] text-gray-600 tracking-widest uppercase border border-dashed border-white/10 px-6 py-4 rounded-xl">
-              <script>
-  atOptions = {
-    'key' : '85ce87d2c92503775761ed4fff3dfb99',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {}
-  };
-</script>
-<script src="https://encouragementglutton.com/85ce87d2c92503775761ed4fff3dfb99/invoke.js"></script>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- === 8. POPULAR SPORTS CATEGORIES GRID === -->
-    <section class="max-w-5xl mx-auto px-4 py-16">
-        <div class="bg-[#141414] border border-white/5 rounded-xl p-6 sm:p-8">
-            <h3 class="text-center font-montserrat font-black text-lg tracking-wider text-gray-300 uppercase mb-8">
-                Top Sports
-            </h3>
-
-            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
-                
-                <!-- Baseball -->
-                <a href="javascript:void(0)" onclick="bukaLink()" class="bg-[#222222] border border-white/5 hover:border-blue-600 hover:bg-[#2c2c2c] p-4 rounded-xl flex flex-col items-center justify-center text-center transition-all group cursor-pointer">
-                    <svg class="w-8 h-8 text-gray-400 group-hover:text-blue-500 mb-2 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M19 2l2 2L6 19c-.8.8-2 .4-2.5-.5s-.1-2.2.7-3L19 2z" />
-                        <path d="M4 17l2 2" />
-                        <circle cx="16" cy="16" r="3.5" />
-                        <path d="M14 13.5a3.5 3.5 0 0 0 4 4" />
-                    </svg>
-                    <span class="text-[11px] font-bold tracking-wide uppercase text-gray-300">Baseball</span>
-                </a>
-
-                <!-- Basketball -->
-                <a href="javascript:void(0)" onclick="bukaLink()" class="bg-[#222222] border border-white/5 hover:border-blue-600 hover:bg-[#2c2c2c] p-4 rounded-xl flex flex-col items-center justify-center text-center transition-all group cursor-pointer">
-                    <svg class="w-8 h-8 text-gray-400 group-hover:text-blue-500 mb-2 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M6.2 6.2c2.5 2.5 2.5 9.1 0 11.6" />
-                        <path d="M17.8 6.2c-2.5 2.5-2.5 9.1 0 11.6" />
-                        <line x1="2" y1="12" x2="22" y2="12" />
-                        <line x1="12" y1="2" x2="12" y2="22" />
-                    </svg>
-                    <span class="text-[11px] font-bold tracking-wide uppercase text-gray-300">Basketball</span>
-                </a>
-
-                <!-- Cheer & Dance -->
-                <a href="javascript:void(0)" onclick="bukaLink()" class="bg-[#222222] border border-white/5 hover:border-blue-600 hover:bg-[#2c2c2c] p-4 rounded-xl flex flex-col items-center justify-center text-center transition-all group cursor-pointer">
-                    <svg class="w-8 h-8 text-gray-400 group-hover:text-blue-500 mb-2 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                        <path d="M12 10v4" stroke-width="2.5" />
-                        <path d="M10 8l-4-3M10 11l-5-1M10 13l-5 1.5M10 16l-4 3" />
-                        <path d="M14 8l4-3M14 11l5-1M14 13l5 1.5M14 16l4 3" />
-                        <path d="M12 8l-1.5-4M12 8l1.5-4M12 16l-1.5 4M12 16l1.5 4" />
-                    </svg>
-                    <span class="text-[11px] font-bold tracking-wide uppercase text-gray-300">Cheer</span>
-                </a>
-
-                <!-- Football -->
-                <a href="javascript:void(0)" onclick="bukaLink()" class="bg-[#222222] border border-white/5 hover:border-blue-600 hover:bg-[#2c2c2c] p-4 rounded-xl flex flex-col items-center justify-center text-center transition-all group cursor-pointer">
-                    <svg class="w-8 h-8 text-gray-400 group-hover:text-blue-500 mb-2 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 13.5C6 6.5 12.5 5 21 3c-2 8.5-3.5 15-10.5 18-3-2-6-4.5-7.5-7.5z" />
-                        <line x1="7.5" y1="16.5" x2="16.5" y2="7.5" />
-                        <line x1="9" y1="12" x2="12" y2="15" />
-                        <line x1="12" y1="9" x2="15" y2="12" />
-                    </svg>
-                    <span class="text-[11px] font-bold tracking-wide uppercase text-gray-300">Football</span>
-                </a>
-
-                <!-- Ice Hockey -->
-                <a href="javascript:void(0)" onclick="bukaLink()" class="bg-[#222222] border border-white/5 hover:border-blue-600 hover:bg-[#2c2c2c] p-4 rounded-xl flex flex-col items-center justify-center text-center transition-all group cursor-pointer">
-                    <svg class="w-8 h-8 text-gray-400 group-hover:text-blue-500 mb-2 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M19.5 3.5L8 15" />
-                        <path d="M8 15l-4.5 1.5c-.8.3-1.5-.4-1.2-1.2L3.8 11" />
-                        <path d="M4.5 3.5L16 15" />
-                        <path d="M16 15l4.5 1.5c.8.3 1.5-.4 1.2-1.2L20.2 11" />
-                        <ellipse cx="12" cy="18" rx="2.5" ry="1.2" fill="currentColor" />
-                    </svg>
-                    <span class="text-[11px] font-bold tracking-wide uppercase text-gray-300">Ice Hockey</span>
-                </a>
-
-                <!-- Soccer -->
-                <a href="javascript:void(0)" onclick="bukaLink()" class="bg-[#222222] border border-white/5 hover:border-blue-600 hover:bg-[#2c2c2c] p-4 rounded-xl flex flex-col items-center justify-center text-center transition-all group cursor-pointer">
-                    <svg class="w-8 h-8 text-gray-400 group-hover:text-blue-500 mb-2 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10" />
-                        <polygon points="12,9 14.5,11 13.5,14 10.5,14 9.5,11" fill="currentColor" class="text-gray-400 group-hover:text-blue-500" />
-                        <path d="M12 9V2M14.5 11l5-2M13.5 14l3.5 4M10.5 14l-3.5 4M9.5 11l-5-2" />
-                    </svg>
-                    <span class="text-[11px] font-bold tracking-wide uppercase text-gray-300">Soccer</span>
-                </a>
-
-                <!-- Volleyball -->
-                <a href="javascript:void(0)" onclick="bukaLink()" class="bg-[#222222] border border-white/5 hover:border-blue-600 hover:bg-[#2c2c2c] p-4 rounded-xl flex flex-col items-center justify-center text-center transition-all group cursor-pointer">
-                    <svg class="w-8 h-8 text-gray-400 group-hover:text-blue-500 mb-2 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M12 2a10 10 0 0 1 0 20" />
-                        <path d="M2 12a10 10 0 0 1 20 0" />
-                        <path d="M19 5c-3.5 3.5-10.5 3.5-14 0" />
-                        <path d="M5 19c3.5-3.5 10.5-3.5 14 0" />
-                    </svg>
-                    <span class="text-[11px] font-bold tracking-wide uppercase text-gray-300">Volleyball</span>
-                </a>
-
-                <!-- Wrestling -->
-                <a href="javascript:void(0)" onclick="bukaLink()" class="bg-[#222222] border border-white/5 hover:border-blue-600 hover:bg-[#2c2c2c] p-4 rounded-xl flex flex-col items-center justify-center text-center transition-all group cursor-pointer">
-                    <svg class="w-8 h-8 text-gray-400 group-hover:text-blue-500 mb-2 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <ellipse cx="12" cy="17" rx="9" ry="4" />
-                        <circle cx="9" cy="7" r="2" />
-                        <path d="M6 14v-3a2 2 0 0 1 2-2h2" />
-                        <circle cx="15" cy="7" r="2" />
-                        <path d="M18 14v-3a2 2 0 0 0-2-2h-2" />
-                        <path d="M9 10l3 2 3-2" />
-                    </svg>
-                    <span class="text-[11px] font-bold tracking-wide uppercase text-gray-300">Wrestling</span>
-                </a>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- === 9. ASSOCIATED TELEVISION NETWORKS (TV Sports) === -->
-    <section class="max-w-5xl mx-auto px-4 pb-20">
-        <div class="bg-[#141414] border border-white/5 rounded-xl p-6 sm:p-8 text-center">
-            <h3 class="font-montserrat font-black text-lg tracking-wider text-gray-300 uppercase mb-8">
-                TV SPORTS
-            </h3>
-
-            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-8 items-center justify-center opacity-70">
-                <div class="flex items-center justify-center h-12">
-                    <span class="font-montserrat font-black text-sm tracking-tighter text-white border-2 border-white px-2 py-0.5">NFHS NETWORK</span>
-                </div>
-                <div class="flex items-center justify-center h-12">
-                    <span class="font-sans font-black text-xl italic text-orange-500">hudl<span class="text-white text-xs bg-orange-500 px-1 rounded ml-1">TV</span></span>
-                </div>
-                <div class="flex items-center justify-center h-12">
-                    <span class="font-montserrat font-black italic text-base text-[#00df82]">GAMECHANGER</span>
-                </div>
-                <div class="flex items-center justify-center h-12">
-                    <span class="font-sans font-black text-lg text-red-600">MAX<span class="text-white">PREPS</span></span>
-                </div>
-                <div class="flex items-center justify-center h-12">
-                    <span class="font-sans font-black text-xl text-white">fubo<span class="text-orange-500 font-black">tv</span></span>
-                </div>
-                <div class="flex items-center justify-center h-12">
-                    <span class="font-sans font-black text-lg tracking-tight text-blue-500">KFBC<span class="text-white text-xs">TV</span></span>
-                </div>
-                <div class="flex items-center justify-center h-12">
-                    <span class="font-sans font-black text-lg tracking-tight text-red-500">WPRG<span class="text-white text-xs">TV</span></span>
-                </div>
-                <div class="flex items-center justify-center h-12">
-                    <span class="font-sans font-black italic text-3xl text-red-600 tracking-tighter border-b-4 border-red-600">ESPN</span>
-                </div>
-                <div class="flex items-center justify-center h-12">
-                    <span class="font-sans font-extrabold text-base text-white tracking-widest uppercase">NBC Sports</span>
-                </div>
-                <div class="flex items-center justify-center h-12">
-                    <span class="font-sans font-black text-base text-white uppercase italic">FOX SPORTS</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-black border-t border-white/5 py-12 pb-safe-bottom">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-xs text-gray-500">&copy; 2026 High School Sports TV Network. All copyrights are protected by law.</p>
-        </div>
+    <footer class="bg-black py-12 text-center text-xs text-gray-500 mt-8">
+        &copy; 2026 High School Sports TV Network.
     </footer>
 
-    <!-- === 10. REAL-TIME USERS ONLINE BADGE === -->
-    <div class="fixed bottom-4 right-4 z-50 bg-black/90 border border-white/10 px-4 py-2.5 rounded-lg shadow-2xl flex items-center space-x-2 select-none">
-        <span class="relative flex h-2.5 w-2.5">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-        </span>
-        <span class="text-[10px] sm:text-xs font-bold text-gray-200">
-            <span id="userCount">9443</span> Users Online Now
-        </span>
-    </div>
-
-    <!-- MAIN CONTROL SCRIPTS -->
     <script>
-        // Load Lucide Icons
         lucide.createIcons();
+        const directLink = "https://www.google.com";
+        function bukaLink() { window.open(directLink, '_blank'); }
 
-        // === [SET YOUR ADSTERRA DIRECT LINK HERE] ===
-        // Masukkan link Anda di antara tanda kutip di bawah ini
-        const directLink = "https://encouragementglutton.com/s39197pa43?key=f132dc8786265785a27bbdb37efd062e";
-
-        // Fungsi sederhana untuk membuka link di tab baru
-        function bukaLink() {
-            if(directLink) {
-                window.open(directLink, '_blank');
-            }
-        }
-
-        // === 3-SECOND SHIELD TIMER FOR REGISTER BUTTON ===
-        let timeLeft = 3; // Diubah dari 10 menjadi 3
+        let timeLeft = 3;
         const countdownText = document.getElementById('countdownText');
         const playerTimer = document.getElementById('playerTimer');
         const registerBtn = document.getElementById('registerBtn');
+        const playerBackground = document.getElementById('playerBackground');
+
+        // Ganti URL ini dengan link gambar background Anda
+        playerBackground.style.backgroundImage = "url('khsaa.png')";
 
         const countdownInterval = setInterval(() => {
             timeLeft--;
-            if (countdownText) {
-                countdownText.innerText = timeLeft;
-            }
+            countdownText.innerText = timeLeft;
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
-                if (playerTimer) playerTimer.classList.add('hidden'); // Hide loading anim
-                if (registerBtn) registerBtn.classList.remove('hidden'); // Display register button
+                playerTimer.classList.add('hidden');
+                registerBtn.classList.remove('hidden');
+                playerBackground.classList.remove('hidden');
             }
         }, 1000);
-
-        // Dynamic Online User Count Simulation
-        setInterval(() => {
-            const countSpan = document.getElementById('userCount');
-            let currentCount = parseInt(countSpan.innerText);
-            const change = Math.floor(Math.random() * 11) - 5; // -5 to +5 range
-            countSpan.innerText = currentCount + change;
-        }, 3000);
     </script>
-    <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
-<!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,5023630,4,22,130,30,00011111']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5023630&101" alt="" border="0"></a></noscript>
-<!-- Histats.com  END  -->
 </body>
 </html>
