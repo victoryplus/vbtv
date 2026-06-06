@@ -2,170 +2,864 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>KHSAA TV | Live Stream</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>GameChanger App | GameChanger</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        montserrat: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        hsRed: '#ff0000',
-                        hsRedHover: '#cc0000',
-                        hsGreen: '#00c853',
-                        hsGreenHover: '#00a844',
-                        darkBg: '#0a0a0a',
-                        darkCard: '#141414',
-                    }
-                }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00DC82 0%, #00B86C 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #0a0a0a;
+        }
+
+        .logo-text {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: #888;
+            font-weight: 500;
+            font-size: 0.7rem;
+            display: block;
+            letter-spacing: 1px;
+            margin-top: -5px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-signin {
+            padding: 0.6rem 1.5rem;
+            border: 2px solid #ffffff;
+            background: transparent;
+            color: #ffffff;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-signin:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-join {
+            padding: 0.6rem 1.5rem;
+            background: #00DC82;
+            color: #0a0a0a;
+            border: 2px solid #00DC82;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-join:hover {
+            background: #00C475;
+            border-color: #00C475;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.9)), 
+                        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        .hero h1 .text-green {
+            color: #00DC82;
+            display: block;
+        }
+
+        .hero h1 .text-white {
+            color: #ffffff;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .btn-watch-live {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: #00DC82;
+            color: #0a0a0a;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 220, 130, 0.3);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-watch-live:hover {
+            background: #00C475;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 220, 130, 0.4);
+        }
+
+        .free-text {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .free-text a {
+            color: #00DC82;
+            text-decoration: underline;
+        }
+
+        .rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stars {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .star {
+            color: #FFB800;
+            font-size: 1.2rem;
+        }
+
+        .rating-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        /* Sports Section */
+        .sports-section {
+            padding: 5rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .sports-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sports-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        .sports-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+        }
+
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sport-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .sport-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .sport-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .sport-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .sport-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(to bottom, #0a0a0a, #111111);
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        .testimonials-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 220, 130, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-stars .star {
+            color: #FFB800;
+            font-size: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00DC82 0%, #00B86C 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #0a0a0a;
+            flex-shrink: 0;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Chat Button */
+        .chat-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #00DC82;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 220, 130, 0.4);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 220, 130, 0.5);
+        }
+
+        .chat-button svg {
+            width: 30px;
+            height: 30px;
+            fill: #0a0a0a;
+        }
+
+        /* Responsive - Tablet */
+        @media (max-width: 968px) {
+            .sports-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
             }
         }
-    </script>
-    <style>
-        .header-compressed-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            letter-spacing: -0.05em;
+
+        /* Responsive - Mobile */
+        @media (max-width: 640px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .logo-text span {
+                font-size: 0.6rem;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+
+            .nav-buttons {
+                gap: 0.5rem;
+            }
+
+            .btn-signin,
+            .btn-join {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 6rem 1rem 2rem;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+                margin-bottom: 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .btn-watch-live {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .free-text {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+
+            .rating {
+                padding: 0.6rem 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .star {
+                font-size: 1rem;
+            }
+
+            .rating-text {
+                font-size: 0.9rem;
+            }
+
+            .sports-section {
+                padding: 3rem 1rem;
+            }
+
+            .sports-title {
+                font-size: 1.8rem;
+            }
+
+            .sports-subtitle {
+                font-size: 1rem;
+            }
+
+            .sports-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .sport-card {
+                padding: 1rem 1.2rem;
+            }
+
+            .testimonials-section {
+                padding: 3rem 1rem;
+            }
+
+            .testimonials-title {
+                font-size: 1.8rem;
+            }
+
+            .testimonials-subtitle {
+                font-size: 1rem;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            .chat-button {
+                width: 50px;
+                height: 50px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .chat-button svg {
+                width: 24px;
+                height: 24px;
+            }
         }
-        .seeker-progress { width: 35%; }
-        /* Memastikan gambar fit dan tidak terpotong */
-        .object-fit-container {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-            background-color: #000;
+
+        /* Responsive - Small Mobile (iPhone SE, etc) */
+        @media (max-width: 380px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn-signin,
+            .btn-join {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .logo-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* Safe area for iPhone notch */
+        @supports (padding-top: env(safe-area-inset-top)) {
+            nav {
+                padding-top: calc(1rem + env(safe-area-inset-top));
+            }
+
+            .chat-button {
+                bottom: calc(2rem + env(safe-area-inset-bottom));
+            }
         }
     </style>
 </head>
-<body class="bg-black text-white font-sans overflow-x-hidden min-h-screen pb-safe">
-
-    <!-- HERO BILLBOARD BANNER -->
-    <section class="bg-[#141414] border-b-2 border-blue-600 py-10 mt-4">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="flex items-center space-x-4 sm:space-x-6 text-center md:text-left">
-                    <div class="bg-hsRed text-white font-montserrat font-black tracking-widest text-xs sm:text-sm px-4 py-2 rounded-md flex items-center shrink-0">
-                        <span class="w-2.5 h-2.5 bg-white rounded-full mr-2 animate-ping"></span>
-                        LIVE
-                    </div>
-                    <h2 class="header-compressed-text text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-none uppercase">
-                        KHSAA TV
-                    </h2>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">GC</div>
+                <div class="logo-text">
+                    GAMECHANGER
+                    <span>BY DICK'S SPORTING GOODS</span>
                 </div>
-                <div class="flex flex-col sm:flex-row md:flex-col gap-3 w-full sm:w-auto">
-                    <button onclick="bukaLink()" class="w-full sm:w-44 py-3 bg-hsRed hover:bg-hsRedHover text-white font-montserrat font-black text-xs uppercase tracking-wider rounded transition-all cursor-pointer">
-                        Subscribe Now
-                    </button>
-                    <button onclick="bukaLink()" class="w-full sm:w-44 py-3 border border-white text-white font-montserrat font-black text-xs uppercase tracking-wider rounded hover:bg-white/10 transition-all cursor-pointer">
-                        Log In
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MEDIA PLAYER CONTAINER -->
-    <section class="max-w-5xl mx-auto px-4 pt-8">
-        <div class="w-full bg-black rounded-xl overflow-hidden border border-white/10 shadow-2xl flex flex-col">
-            <div id="playerContainer" class="relative w-full aspect-video flex flex-col items-center justify-center p-4 sm:p-8 text-center bg-neutral-950">
-                
-                <!-- BACKGROUND IMAGE CONTAINER -->
-                <div id="playerBackground" class="hidden absolute inset-0 z-0 bg-cover bg-center brightness-[0.5]"></div>
-                
-                <div class="relative z-10 max-w-lg flex flex-col items-center px-2">
-                    <h3 class="text-sm sm:text-xl lg:text-2xl font-bold text-gray-200 tracking-tight leading-snug">
-                        KHSAA TV is only available for Registered Users. 
-                        Create a <span class="text-hsGreen font-extrabold">FREE</span> account to get access to your HD stream
-                    </h3>
-                    <div id="playerTimer" class="mt-8 flex flex-col items-center space-y-3">
-                        <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-hsGreen"></div>
-                        <p class="text-sm text-gray-300 font-semibold">
-                            Connecting... Please wait <span id="countdownText" class="text-hsGreen font-bold">3</span>s
-                        </p>
-                    </div>
-                    <button id="registerBtn" onclick="bukaLink()" class="hidden mt-8 px-8 py-4 bg-hsGreen hover:bg-hsGreenHover text-white font-montserrat font-black text-sm uppercase rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg shadow-hsGreen/30 cursor-pointer">
-                        CREATE A FREE ACCOUNT
-                    </button>
-                </div>
-            </div>
+            </a>
             
-            <div class="w-full bg-[#111111] border-t border-white/10 px-4 py-3.5 flex items-center justify-between gap-4">
-                <button onclick="bukaLink()" class="text-gray-300 hover:text-white"><i data-lucide="play" class="w-4 h-4"></i></button>
-                <div onclick="bukaLink()" class="flex-grow bg-gray-800 h-1.5 rounded-full cursor-pointer overflow-hidden">
-                    <div class="bg-blue-600 h-full seeker-progress"></div>
-                </div>
-                <button onclick="bukaLink()" class="text-gray-400 hover:text-white"><i data-lucide="maximize" class="w-4 h-4"></i></button>
+            <div class="nav-buttons">
+                <a href="#" class="btn-signin direct-link">Sign In</a>
+                <a href="#" class="btn-join direct-link">Join Us</a>
             </div>
         </div>
-        <button onclick="bukaLink()" class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-b-xl cursor-pointer shadow-lg shadow-blue-500/10">
-            <span class="font-montserrat font-black text-xs text-white tracking-widest uppercase">WATCH LIVE GAME TODAY</span>
-        </button>
-    </section>
+    </nav>
 
-    <!-- AD SPACES -->
-    <section class="max-w-4xl mx-auto px-4 mt-8 space-y-4">
-        <div class="w-full flex items-center justify-center min-h-[50px] border border-dashed border-white/10 rounded-xl text-[9px] text-gray-600 uppercase">AD SPACE</div>
-        <div class="w-full flex items-center justify-center min-h-[50px] border border-dashed border-white/10 rounded-xl text-[9px] text-gray-600 uppercase">AD SPACE</div>
-    </section>
-
-    <!-- DUA KOTAK FOTO TAMBAHAN -->
-    <section class="max-w-4xl mx-auto px-4 mt-8">
-        <div class="grid grid-cols-2 gap-4">
-            <div class="flex flex-col gap-3">
-                <div onclick="bukaLink()" class="cursor-pointer border border-white/10 rounded-lg overflow-hidden bg-neutral-900">
-                    <img src="bs1.png" alt="Baseball" class="object-fit-container">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                <span class="text-green">LIVE THE GAME</span>
+                <span class="text-white">LIKE NEVER BEFORE</span>
+            </h1>
+            
+            <p class="hero-subtitle">With access to subscriber-only content like post-game recaps and replay the action. Keep everyone in the loop with instant updates.</p>
+            
+            <button class="btn-watch-live direct-link">WATCH LIVE</button>
+            
+            <p class="free-text">Live streaming access is <a href="#" class="direct-link"> FREE </a>  for all supporters</p>
+            
+            <div class="rating">
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
                 </div>
-                <a href="javascript:void(0)" onclick="bukaLink()" class="text-center text-[10px] sm:text-xs font-bold text-gray-300 hover:text-white uppercase transition-colors underline underline-offset-4">
-                    BASEBALL STATE TOURNAMENT 2026
-                </a>
-            </div>
-            <div class="flex flex-col gap-3">
-                <div onclick="bukaLink()" class="cursor-pointer border border-white/10 rounded-lg overflow-hidden bg-neutral-900">
-                    <img src="sf1.png" alt="Softball" class="object-fit-container">
-                </div>
-                <a href="javascript:void(0)" onclick="bukaLink()" class="text-center text-[10px] sm:text-xs font-bold text-gray-300 hover:text-white uppercase transition-colors underline underline-offset-4">
-                    SOFTBALL STATE TOURNAMENT 2026
-                </a>
+                <span class="rating-text">4.9 / 750K+ Reviews</span>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black py-12 text-center text-xs text-gray-500 mt-8">
-        &copy; 2026 High School Sports TV Network.
-    </footer>
+    <!-- Sports Section -->
+    <section class="sports-section">
+        <div class="sports-container">
+            <h2 class="sports-title">Robust Tools for Every Coach</h2>
+            <p class="sports-subtitle">See how GameChanger can transform your team's season.</p>
+            
+            <div class="sports-grid">
+                <a href="#" class="sport-card direct-link">
+                    <div class="sport-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#E74C3C" stroke-width="2" stroke-linecap="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M7 7 Q12 12 7 17"/>
+                            <path d="M17 7 Q12 12 17 17"/>
+                        </svg>
+                    </div>
+                    <div class="sport-name">Baseball</div>
+                </a>
 
+                <a href="#" class="sport-card direct-link">
+                    <div class="sport-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#F1C40F" stroke-width="2" stroke-linecap="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M7 7 Q12 12 7 17"/>
+                            <path d="M17 7 Q12 12 17 17"/>
+                        </svg>
+                    </div>
+                    <div class="sport-name">Softball</div>
+                </a>
+
+                <a href="#" class="sport-card direct-link">
+                    <div class="sport-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#E67E22" stroke-width="2" stroke-linecap="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2 L12 22"/>
+                            <path d="M2 12 L22 12"/>
+                            <path d="M4 4 Q12 12 20 20"/>
+                            <path d="M20 4 Q12 12 4 20"/>
+                        </svg>
+                    </div>
+                    <div class="sport-name">Basketball</div>
+                </a>
+
+                <a href="#" class="sport-card direct-link">
+                    <div class="sport-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#E67E22" stroke-width="2" stroke-linecap="round">
+                            <ellipse cx="12" cy="12" rx="10" ry="6"/>
+                            <path d="M7 12 Q12 15 17 12"/>
+                            <path d="M7 12 Q12 9 17 12"/>
+                            <line x1="12" y1="6" x2="12" y2="18"/>
+                            <line x1="9" y1="8" x2="9" y2="16"/>
+                            <line x1="15" y1="8" x2="15" y2="16"/>
+                        </svg>
+                    </div>
+                    <div class="sport-name">Football</div>
+                </a>
+
+                <a href="#" class="sport-card direct-link">
+                    <div class="sport-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#3498DB" stroke-width="2" stroke-linecap="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2 Q8 8 8 12 Q8 16 12 22"/>
+                            <path d="M12 2 Q16 8 16 12 Q16 16 12 22"/>
+                            <path d="M2 12 Q8 10 12 10 Q16 10 22 12"/>
+                            <path d="M2 12 Q8 14 12 14 Q16 14 22 12"/>
+                        </svg>
+                    </div>
+                    <div class="sport-name">Volleyball</div>
+                </a>
+
+                <a href="#" class="sport-card direct-link">
+                    <div class="sport-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#5DADE2" stroke-width="2" stroke-linecap="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2 L14 7 L19 7 L15 10 L17 15 L12 12 L7 15 L9 10 L5 7 L10 7 Z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="sport-name">Soccer</div>
+                </a>
+
+                <a href="#" class="sport-card direct-link">
+                    <div class="sport-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#F1C40F" stroke-width="2" stroke-linecap="round">
+                            <circle cx="18" cy="6" r="4"/>
+                            <line x1="15" y1="9" x2="6" y2="18"/>
+                            <line x1="6" y1="18" x2="4" y2="20"/>
+                        </svg>
+                    </div>
+                    <div class="sport-name">Lacrosse</div>
+                </a>
+
+                <a href="#" class="sport-card direct-link">
+                    <div class="sport-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#95A5A6" stroke-width="2" stroke-linecap="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="16"/>
+                            <line x1="8" y1="12" x2="16" y2="12"/>
+                        </svg>
+                    </div>
+                    <div class="sport-name">All Other Sports</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="testimonials-title">A Few Words From Our Cheering Section</h2>
+            <p class="testimonials-subtitle">Join thousands of satisfied coaches who trust GameChanger</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">"GameChanger has completely transformed how we track our baseball team's stats. The live streaming feature allows parents who can't attend games to still feel connected. Absolutely essential for any serious coach!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Mike Richardson</h4>
+                            <p>Baseball Coach, Texas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">"The best part about GameChanger is how easy it is to use. I can focus on coaching instead of worrying about complex stats tracking. My players love watching their game highlights too!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SJ</div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Softball Coach, California</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">"We've been using GameChanger for 3 seasons now and it keeps getting better. The analytics help us identify player strengths and areas for improvement. Highly recommend to any basketball program!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DT</div>
+                        <div class="author-info">
+                            <h4>David Thompson</h4>
+                            <p>Basketball Coach, New York</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Button -->
+    <div class="chat-button direct-link">
+        <svg viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+        </svg>
+    </div>
+
+    <!-- JavaScript untuk Single Direct Link -->
     <script>
-        lucide.createIcons();
-        const directLink = "https://www.google.com";
-        function bukaLink() { window.open(directLink, '_blank'); }
+        // ============================================
+        // KONFIGURASI DIRECT LINK - GANTI URL DI SINI
+        // ============================================
+        const DIRECT_LINK_URL = 'https://www.google.com';
+        // ============================================
 
-        let timeLeft = 3;
-        const countdownText = document.getElementById('countdownText');
-        const playerTimer = document.getElementById('playerTimer');
-        const registerBtn = document.getElementById('registerBtn');
-        const playerBackground = document.getElementById('playerBackground');
+        // Otomatis tambahkan link ke semua elemen dengan class 'direct-link'
+        document.addEventListener('DOMContentLoaded', function() {
+            const directLinks = document.querySelectorAll('.direct-link');
+            
+            directLinks.forEach(function(element) {
+                // Jika element adalah <a> tag, set href
+                if (element.tagName.toLowerCase() === 'a') {
+                    element.href = DIRECT_LINK_URL;
+                    element.target = '_blank';
+                    element.rel = 'noopener noreferrer';
+                } 
+                // Jika element adalah button atau div, tambahkan click handler
+                else {
+                    element.style.cursor = 'pointer';
+                    element.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.open(DIRECT_LINK_URL, '_blank', 'noopener,noreferrer');
+                    });
+                }
+            });
 
-        // Ganti URL ini dengan link gambar background Anda
-        playerBackground.style.backgroundImage = "url('khsaa.png')";
-
-        const countdownInterval = setInterval(() => {
-            timeLeft--;
-            countdownText.innerText = timeLeft;
-            if (timeLeft <= 0) {
-                clearInterval(countdownInterval);
-                playerTimer.classList.add('hidden');
-                registerBtn.classList.remove('hidden');
-                playerBackground.classList.remove('hidden');
-            }
-        }, 1000);
+            console.log('Direct link configured:', DIRECT_LINK_URL);
+            console.log('Total clickable elements:', directLinks.length);
+        });
     </script>
 </body>
 </html>
