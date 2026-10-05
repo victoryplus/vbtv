@@ -1,235 +1,769 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://encouragementglutton.com/79/6d/3e/796d3eed2db65c294beb1b3e99cefb98.js"></script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VBTV - Volleyball Nations League</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="theme-color" content="#050A14">
+    <title>HS Football Live • Premium Streaming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #000; color: #fff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
-        .hero {
-            position: relative; width: 100%; height: 100dvh;
-            overflow: hidden; display: flex; align-items: center; justify-content: center;
+        :root {
+            --primary: #FF3B3B;
+            --primary-dark: #CC0000;
+            --primary-glow: rgba(255, 59, 59, 0.5);
+            --accent: #FFD700;
+            --bg-dark: #050A14;
+            --bg-card: rgba(10, 20, 40, 0.7);
+            --border-glow: rgba(255, 59, 59, 0.3);
         }
         
-        /* GANTI BACKGROUND GAMBAR DI SINI */
-        .hero-bg {
-            position: absolute; inset: 0; z-index: 1;
-            background: url('vb1.png') center center/cover no-repeat;
-            filter: brightness(0.8);
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
         
-        .hero::before {
-            content: ''; position: absolute; inset: 0; z-index: 2;
-            background: rgba(0,0,0,0.35);
+        /* ========== ANIMATED BACKGROUND - NAVY + HITAM ========== */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 50, 100, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 30, 80, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 59, 59, 0.08) 0%, transparent 60%),
+                linear-gradient(135deg, #050A14 0%, #0A1428 50%, #050A14 100%);
+            animation: bgShift 20s ease-in-out infinite;
         }
         
-        .navbar {
-            position: absolute; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 20px 60px; display: flex; justify-content: space-between; align-items: center;
-        }
-        .logo { font-size: 24px; font-weight: 800; color: #CCFF00; letter-spacing: 1px; }
-        
-        .sign-in-btn {
-            background: #CCFF00; color: #000; border: none; padding: 12px 28px;
-            border-radius: 6px; font-weight: 700; font-size: 14px; cursor: pointer;
-            text-transform: uppercase; letter-spacing: 0.5px; transition: 0.2s;
-            text-decoration: none; display: inline-block;
-        }
-        .sign-in-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(204, 255, 0, 0.4); }
-        
-        .hero-content {
-            position: relative; z-index: 3; text-align: center;
-            display: flex; flex-direction: column; align-items: center; gap: 40px;
+        @keyframes bgShift {
+            0%, 100% { background-position: 0% 0%, 100% 100%, 50% 50%, 0% 0%; }
+            50% { background-position: 100% 100%, 0% 0%, 50% 50%, 100% 100%; }
         }
         
-        .vnl-logo h1 { font-size: 120px; font-weight: 800; letter-spacing: -2px; line-height: 1; margin-bottom: 10px; }
-        .vnl-logo h2 { font-size: 32px; font-weight: 600; letter-spacing: 4px; margin-bottom: 8px; }
-        .vnl-logo h3 { font-size: 28px; font-weight: 500; letter-spacing: 2px; }
-        
-        .watch-live {
-            display: flex; align-items: center; gap: 12px; margin-top: 20px;
-            font-size: 18px; font-weight: 600; justify-content: center;
+        /* Grid pattern overlay - NAVY */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(0, 100, 200, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 100, 200, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
         }
-        .watch-live .dot {
-            width: 12px; height: 12px; background: #ff0000; border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        .vbtv-small { color: #CCFF00; font-weight: 700; }
         
-        .watch-now-btn {
-            background: #CCFF00; color: #000; border: none; padding: 16px 40px; border-radius: 8px;
-            font-weight: 700; font-size: 16px; cursor: pointer; text-transform: uppercase;
-            letter-spacing: 1px; display: flex; align-items: center; gap: 10px; transition: 0.2s;
+        /* ========== GLASSMORPHISM CARD - NAVY ========== */
+        .glass-card {
+            background: rgba(10, 20, 40, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 59, 59, 0.5), transparent);
+        }
+        
+        /* ========== NEON BUTTON (RED) ========== */
+        .btn-neon {
+            background: linear-gradient(135deg, #FF3B3B 0%, #CC0000 100%);
+            color: white;
+            border: none;
+            font-weight: 800;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 0 20px rgba(255, 59, 59, 0.4),
+                0 4px 15px rgba(255, 59, 59, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-neon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-neon:hover::before {
+            left: 100%;
+        }
+        
+        .btn-neon:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 0 30px rgba(255, 59, 59, 0.6),
+                0 10px 30px rgba(255, 59, 59, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+        
+        .btn-neon:active {
+            transform: translateY(-1px) scale(0.99);
+        }
+        
+        /* ========== OUTLINE BUTTON (RED) ========== */
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255, 59, 59, 0.1);
+            box-shadow: 0 0 20px rgba(255, 59, 59, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* ========== TEXT NEON (RED) ========== */
+        .text-neon {
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(255, 59, 59, 0.6);
+        }
+        
+        .text-gold-glow {
+            color: var(--accent);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        /* ========== MEDIA PLAYER ========== */
+        .player-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 59, 59, 0.3);
+            box-shadow: 
+                0 0 40px rgba(255, 59, 59, 0.15),
+                0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+        
+        .player-container iframe,
+        .player-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            object-fit: cover;
+        }
+        
+        /* Player Background */
+        .player-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/player-bg.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 2;
+            transition: opacity 0.5s ease;
+        }
+        
+        .player-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
+        }
+        
+        .player-bg-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* Live Badge */
+        .live-badge-modern {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(220, 38, 38, 0.95);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+        }
+        
+        .live-dot-modern {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulseDot 1.5s infinite;
+        }
+        
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+        
+        /* Viewer Count */
+        .viewer-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+        }
+        
+        /* Play Button */
+        .play-button-modern {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #FF3B3B 0%, #CC0000 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 0 40px rgba(255, 59, 59, 0.6),
+                0 0 80px rgba(255, 59, 59, 0.3);
+            transition: all 0.3s ease;
+            animation: pulsePlay 2s infinite;
+            cursor: pointer;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes pulsePlay {
+            0%, 100% { box-shadow: 0 0 40px rgba(255, 59, 59, 0.6), 0 0 80px rgba(255, 59, 59, 0.3); }
+            50% { box-shadow: 0 0 60px rgba(255, 59, 59, 0.8), 0 0 120px rgba(255, 59, 59, 0.4); }
+        }
+        
+        .play-button-modern:hover {
+            transform: scale(1.1);
+        }
+        
+        .play-button-modern svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+            margin-left: 6px;
+        }
+        
+        /* Caption */
+        .play-caption {
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            animation: pulseText 2s infinite;
+        }
+        
+        @keyframes pulseText {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        /* Unlock Overlay */
+        .unlock-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .unlock-overlay.active {
+            display: flex;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .unlock-content {
+            text-align: center;
+            padding: 30px;
+            max-width: 400px;
+        }
+        
+        .unlock-btn {
+            background: linear-gradient(135deg, #FF3B3B 0%, #CC0000 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 30px rgba(255, 59, 59, 0.6),
+                0 10px 30px rgba(255, 59, 59, 0.4);
             text-decoration: none;
+            display: inline-block;
+            animation: pulseUnlock 1.5s infinite;
         }
-        .watch-now-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(204, 255, 0, 0.5); }
-
-        /* SECTION 1: STATS BAR */
-        .stats-bar {
-            background: #0a0a0a; border-bottom: 1px solid #1a1a1a;
-            padding: 40px 60px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
-        }
-        .stat-item { text-align: center; }
-        .stat-item h3 { font-size: 36px; font-weight: 800; color: #CCFF00; margin-bottom: 8px; }
-        .stat-item p { font-size: 14px; color: #777; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* SECTION 2: FEATURES */
-        .features {
-            background: #000; padding: 80px 60px;
-        }
-        .section-title {
-            text-align: center; margin-bottom: 60px;
-        }
-        .section-title h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
-        .section-title p { font-size: 16px; color: #777; }
         
-        .features-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto;
+        @keyframes pulseUnlock {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
-        .feature-card {
-            background: #0f0f0f; border: 1px solid #1a1a1a; border-radius: 12px;
-            padding: 32px 24px; text-align: center; transition: 0.3s;
-        }
-        .feature-card:hover { border-color: #CCFF00; transform: translateY(-4px); }
-        .feature-card i { font-size: 32px; color: #CCFF00; margin-bottom: 20px; }
-        .feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
-        .feature-card p { font-size: 14px; color: #777; line-height: 1.6; }
-
-        /* FOOTER */
-        .footer-bar {
-            background: #000; border-top: 1px solid #1a1a1a;
-            padding: 40px 60px; text-align: center;
-        }
-        .footer-links { display: flex; gap: 32px; justify-content: center; margin-bottom: 20px; }
-        .footer-links a { color: #777; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; }
-        .footer-links a:hover { color: #CCFF00; }
-        .footer-copy { font-size: 12px; color: #555; }
         
-        @media (max-width: 1024px) {
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
-            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+        .unlock-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 
+                0 0 40px rgba(255, 59, 59, 0.8),
+                0 15px 40px rgba(255, 59, 59, 0.5);
         }
-        @media (max-width: 768px) {
-            .vnl-logo h1 { font-size: 60px; }
-            .vnl-logo h2 { font-size: 18px; }
-            .vnl-logo h3 { font-size: 20px; }
-            .navbar { padding: 15px 20px; }
-            .features, .stats-bar { padding: 40px 20px; }
-            .features-grid { grid-template-columns: 1fr; }
-            .footer-bar { padding: 30px 20px; }
+        
+        /* ========== BANNER CONTAINER ========== */
+        .banner-container {
+            text-align: center;
+            margin: 20px auto;
+            padding: 8px 0;
+            clear: both;
+            overflow: hidden;
         }
+        
+        .banner-label {
+            font-size: 9px;
+            color: rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .banner-container iframe,
+        .banner-container img,
+        .banner-container ins {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        /* ========== TITLE MODERN ========== */
+        .title-modern {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+        
+        /* ========== BADGE MODERN ========== */
+        .badge-modern {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 59, 59, 0.1);
+            border: 1px solid rgba(255, 59, 59, 0.3);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        /* ========== MOBILE OPTIMIZATION ========== */
+        @media (max-width: 480px) {
+            .player-container {
+                border-radius: 16px;
+            }
+            
+            .live-badge-modern, .viewer-badge {
+                font-size: 10px;
+                padding: 4px 10px;
+                top: 12px;
+            }
+            
+            .live-badge-modern { left: 12px; }
+            .viewer-badge { right: 12px; }
+            
+            .play-button-modern {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .play-button-modern svg {
+                width: 28px;
+                height: 28px;
+            }
+            
+            .play-caption {
+                font-size: 13px;
+            }
+            
+            .unlock-btn {
+                padding: 14px 28px;
+                font-size: 15px;
+            }
+        }
+        
+        /* ========== SAFE AREA ========== */
+        @supports (padding: max(0px)) {
+            .safe-padding {
+                padding-left: max(1rem, env(safe-area-inset-left));
+                padding-right: max(1rem, env(safe-area-inset-right));
+                padding-top: max(1rem, env(safe-area-inset-top));
+				padding-bottom: max(1rem, env(safe-area-inset-bottom));
+            }
+        }
+        
+        /* ========== SCROLLBAR ========== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050A14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 59, 59, 0.3);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 59, 59, 0.5);
+        }
+        
+        /* ========== FADE IN ANIMATION ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .delay-3 { animation-delay: 0.3s; opacity: 0; }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <!-- GANTI BACKGROUND GAMBAR DI SINI -->
-        <div class="hero-bg"></div>
-        
-        <nav class="navbar">
-            <div class="logo"> </div>
-            <!-- GANTI LINK SIGN IN DI SINI -->
-            <a href="https://encouragementglutton.com/s39197pa43?key=f132dc8786265785a27bbdb37efd062e" class="sign-in-btn" target="_blank">SIGN IN</a>
-        </nav>
 
-        <div class="hero-content">
-            <div class="vnl-logo">
-                <h1>VNL</h1>
-                <h2>VOLLEYBALL</h2>
-                <h3>NATIONS LEAGUE</h3>
-                <div class="watch-live">
-                    <span class="dot"></span>
-                    <span>WATCH LIVE ON</span>
-                    <span class="vbtv-small">VBTV</span>
+    <!-- Animated Background - NAVY -->
+    <div class="animated-bg"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- ========================================== -->
+    <!-- MAIN CONTAINER -->
+    <!-- ========================================== -->
+    <div class="safe-padding max-w-7xl mx-auto px-4 py-6 md:py-10">
+        
+        <!-- ========================================== -->
+        <!-- HEADER -->
+        <!-- ========================================== -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 fade-in-up">
+            
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-2xl shadow-lg shadow-red-500/30">
+                    🏈
+                </div>
+                <div>
+                    <h1 class="title-modern text-2xl md:text-3xl">
+                        HS <span class="text-neon">VOLLEYBALL</span>
+                    </h1>
+                    <p class="text-xs text-gray-500 tracking-widest">PREMIUM STREAMING</p>
                 </div>
             </div>
-            <!-- GANTI LINK WATCH NOW DI SINI -->
-            <a href="https://encouragementglutton.com/s39197pa43?key=f132dc8786265785a27bbdb37efd062e" class="watch-now-btn" target="_blank">
-                <i class="fas fa-play"></i>
-                WATCH NOW
-            </a>
+            
+            <div class="badge-modern">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                LIVE NOW • <span id="liveCounter">12,847</span> watching
+            </div>
         </div>
+
+        <!-- ========================================== -->
+        <!-- HERO TITLE -->
+        <!-- ========================================== -->
+        <div class="text-center mb-8 fade-in-up delay-1">
+            <div class="badge-modern mb-4">
+                🏆 FALL SEASON 2026 • REGULER
+            </div>
+            <h2 class="title-modern text-5xl md:text-7xl lg:text-8xl mb-4">
+                WATCH HIGH SCHOOL <br>
+                <span class="text-gold-glow">VOLLEYBALL</span>
+            </h2>
+            <p class="text-base md:text-xl text-gray-400 max-w-2xl mx-auto">
+                Watch every high school volleyball game live in stunning 4K. 
+                <span class="text-neon font-semibold">Free streaming • No cable required</span>
+            </p>
+        </div>
+
+        <!-- BANNER #1 -->
+        <div class="banner-container fade-in-up delay-2">
+            <div class="banner-label">Advertisement</div>
+            <div id="banner-top">
+                <!-- ⬇️⬇️⬇️ PASTE BANNER 728x90 DI SINI ⬇️⬇️⬇️ -->
+                
+                <!-- ⬆️⬆️⬆️ PASTE BANNER DI SINI ⬆️⬆️⬆️ -->
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- MEDIA PLAYER -->
+        <!-- ========================================== -->
+        <div class="mb-6 fade-in-up delay-2">
+            <div class="player-container">
+                
+                <div class="live-badge-modern">
+                    <span class="live-dot-modern"></span>
+                    <span>LIVE</span>
+                </div>
+                
+                <div class="viewer-badge">
+                    👁️ <span id="playerViewerCount">12,847</span>
+                </div>
+                
+                <!-- PLAYER BACKGROUND -->
+                <div class="player-bg" id="playerBg">
+                    <div class="player-bg-content">
+                        <div class="play-button-modern" onclick="startVideo()">
+                            <svg viewBox="0 0 24 24"><path d="hs.jpg"/></svg>
+                        </div>
+                        <p class="play-caption">▶ CLICK PLAY TO VIEW</p>
+                    </div>
+                </div>
+                
+                <!-- VIDEO PLAYER -->
+                <video id="mainVideo" controls playsinline preload="metadata" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;">
+                    <source src="videos/highlights.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <!-- UNLOCK OVERLAY -->
+                <div class="unlock-overlay" id="unlockOverlay">
+                    <div class="unlock-content">
+                        <div style="font-size: 48px; margin-bottom: 16px;">🔒</div>
+                        <h3 style="color: white; font-size: 22px; font-weight: 800; margin-bottom: 12px; letter-spacing: 1px;">
+                            PREMIUM CONTENT
+                        </h3>
+                        <p style="color: #aaa; font-size: 14px; margin-bottom: 24px;">
+                            This game is available for premium members only.
+                        </p>
+                        <a href="https://YOUR_SMARTLINK.adsterra.com?psid=hs_football_unlock" class="unlock-btn">
+                            🔓 UNLOCK TO ACCESS PREMIUM
+                        </a>
+                        <p style="color: #666; font-size: 11px; margin-top: 16px;">
+                            Free registration • No credit card required
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- BANNER #2 -->
+        <div class="banner-container fade-in-up delay-3">
+            <div class="banner-label">Advertisement</div>
+            <div id="banner-below-player">
+                <!-- ⬇️⬇️⬇️ PASTE BANNER 728x90 DI SINI ⬇️⬇️⬇️ -->
+                
+                <!-- ⬆️⬆️⬆️ PASTE BANNER DI SINI ⬆️⬆️⬆️ -->
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- CTA SECTION -->
+        <!-- ========================================== -->
+        <div class="glass-card p-6 md:p-8 mb-8 fade-in-up delay-3">
+            <div class="text-center mb-6">
+                <h3 class="title-modern text-3xl md:text-4xl mb-3">
+                    🔥 WATCH <span class="text-neon">LIVE NOW</span>
+                </h3>
+                <p class="text-gray-400 text-sm">Get instant access to all games</p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://www.google.com?psid=hs_football_login" 
+                   class="btn-outline px-8 py-4 rounded-full text-center font-bold transition-all duration-300">
+                    🔐 LOGIN
+                </a>
+                <a href="https://www.google.com?psid=hs_football_register" 
+                   class="btn-neon px-8 py-4 rounded-full text-center font-bold transition-all duration-300">
+                    ✨ WATCH FREE NOW →
+                </a>
+            </div>
+            
+            <p class="text-center text-gray-500 text-xs mt-4">No credit card required • Instant access • Cancel anytime</p>
+        </div>
+
+        <!-- BANNER #3 -->
+        <div class="banner-container fade-in-up delay-3">
+            <div class="banner-label">Advertisement</div>
+            <div id="banner-bottom">
+                <!-- ⬇️⬇️⬇️ PASTE BANNER 728x90 DI SINI ⬇️⬇️⬇️ -->
+                
+                <!-- ⬆️⬆️⬆️ PASTE BANNER DI SINI ⬆️⬆️⬆️ -->
+            </div>
+        </div>
+
+        <!-- PROMO CONTENT -->
+        <div class="glass-card p-6 md:p-10 text-center mb-8 fade-in-up delay-3">
+            <h3 class="title-modern text-3xl md:text-4xl mb-6">
+                🎯 <span class="text-neon">FREE</span> PREMIUM ACCESS
+            </h3>
+            <div class="space-y-5 text-gray-300 leading-relaxed text-left md:text-center">
+                <p>🏈 <strong class="text-white">Watch EVERY high school football game live</strong> — Regular season, Playoffs, and State Championships in stunning 4K quality.</p>
+                <p>📱 <strong class="text-white">Stream on any device</strong> — TV, laptop, tablet, or smartphone</p>
+                <p>🎙️ <strong class="text-white">Expert commentary</strong> • Real-time stats • Instant replays</p>
+                <div class="bg-red-500/10 border border-red-500/30 rounded-2xl p-6 mt-6">
+                    <p class="text-lg md:text-xl font-semibold">🔥 <strong class="text-neon">LIMITED OFFER</strong> — 100% Free Trial Today</p>
+                    <p class="text-sm text-gray-300 mt-2">Click REGISTER to start watching instantly!</p>
+                    <p class="text-xs text-gray-400 mt-3">✅ No card needed • ✅ Cancel anytime • ✅ 24/7 support</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="border-t border-white/10 py-6 text-center text-gray-500 text-xs">
+            <div class="flex justify-center gap-6 mb-4">
+                <a href="#" class="hover:text-neon transition-colors">Terms</a>
+                <a href="#" class="hover:text-neon transition-colors">Privacy</a>
+                <a href="#" class="hover:text-neon transition-colors">Contact</a>
+            </div>
+            <p>&copy; 2026 HS Football Network • All rights reserved.</p>
+            <p class="mt-1">18+ | Geo-restrictions may apply</p>
+        </footer>
+
     </div>
 
-    <!-- SECTION 1: STATS -->
-    <div class="stats-bar">
-        <!-- GANTI ANGKA STATS DI SINI -->
-        <div class="stat-item">
-            <h3>248</h3>
-            <p>Live Matches</p>
-        </div>
-        <div class="stat-item">
-            <h3>32</h3>
-            <p>Countries</p>
-        </div>
-        <div class="stat-item">
-            <h3>500+</h3>
-            <p>Hours Content</p>
-        </div>
-        <div class="stat-item">
-            <h3>24/7</h3>
-            <p>Live Coverage</p>
-        </div>
-    </div>
+    <!-- ========================================== -->
+    <!-- SCRIPTS -->
+    <!-- ========================================== -->
+    <script>
+        // ==========================================
+        // LIVE COUNTER FLUKTUATIF
+        // ==========================================
+        let liveCount = 12847;
+        
+        function updateLiveCounter() {
+            const change = Math.floor(Math.random() * 80) - 30;
+            liveCount += change;
+            
+            if (liveCount < 11500) liveCount = 11500 + Math.floor(Math.random() * 500);
+            if (liveCount > 14500) liveCount = 14500 - Math.floor(Math.random() * 500);
+            
+            const formatted = liveCount.toLocaleString('en-US');
+            
+            document.getElementById('liveCounter').innerText = formatted;
+            const playerCount = document.getElementById('playerViewerCount');
+            if (playerCount) playerCount.innerText = formatted;
+        }
+        
+        setInterval(updateLiveCounter, 2500 + Math.random() * 1500);
+        
+        // ==========================================
+        // VIDEO PLAYER LOGIC
+        // ==========================================
+        let videoStarted = false;
+        
+        function startVideo() {
+            if (videoStarted) return;
+            videoStarted = true;
+            
+            const playerBg = document.getElementById('playerBg');
+            const video = document.getElementById('mainVideo');
+            
+            playerBg.style.opacity = '0';
+            video.style.display = 'block';
+            
+            video.play().catch(err => {
+                console.log('Autoplay error:', err);
+                video.muted = true;
+                video.play();
+            });
+            
+            setTimeout(() => {
+                playerBg.style.display = 'none';
+            }, 500);
+            
+            setTimeout(() => {
+                document.getElementById('unlockOverlay').classList.add('active');
+            }, 5000);
+        }
+        
+        // ==========================================
+        // PAUSE VIDEO SAAT TAB TIDAK AKTIF
+        // ==========================================
+        document.addEventListener('visibilitychange', () => {
+            const video = document.getElementById('mainVideo');
+            if (document.hidden && video) {
+                video.pause();
+            }
+        });
+    </script>
 
-    <!-- SECTION 2: FEATURES -->
-    <div class="features">
-        <div class="section-title">
-            <h2>Why Watch on VBTV</h2>
-            <p>The ultimate volleyball streaming experience</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-video"></i>
-                <h3>Live in HD</h3>
-                <p>Watch every VNL match live in 1080p with zero lag and pro commentary</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-replay"></i>
-                <h3>Full Replays</h3>
-                <p>Missed the match? Watch full replays and highlights anytime, anywhere</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-camera"></i>
-                <h3>Multi-Angle</h3>
-                <p>Switch between 6+ camera angles including player cam and net cam</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-chart-line"></i>
-                <h3>Live Stats</h3>
-                <p>Real-time player stats, heat maps, and rally analytics during matches</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- FOOTER -->
-    <div class="footer-bar">
-        <div class="footer-links">
-            <!-- GANTI LINK FOOTER DI SINI -->
-            <a href="#terms">Terms of Service</a>
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#help">Help Center</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <div class="footer-copy">© 2026 VBTV. Volleyball World. All rights reserved.</div>
-    </div>
-      <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
-<!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,5023630,4,22,130,30,00011111']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5023630&101" alt="" border="0"></a></noscript>
-<!-- Histats.com  END  -->
 </body>
 </html>
