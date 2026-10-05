@@ -270,13 +270,22 @@
         }
         
         /* Play Button */
-       .play-button-modern svg {
-    width: 40px !important;
-    height: 40px !important;
-    fill: white !important;
-    margin-left: 6px;
-    display: block;
-}
+       .play-button-modern {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #FF3B3B 0%, #CC0000 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 0 40px rgba(255, 59, 59, 0.6),
+                0 0 80px rgba(255, 59, 59, 0.3);
+            transition: all 0.3s ease;
+            animation: pulsePlay 2s infinite;
+            cursor: pointer;
+            margin: 0 auto 20px;
+        }
         
         @keyframes pulsePlay {
             0%, 100% { box-shadow: 0 0 40px rgba(255, 59, 59, 0.6), 0 0 80px rgba(255, 59, 59, 0.3); }
@@ -288,11 +297,12 @@
         }
         
         .play-button-modern svg {
-            width: 40px;
-            height: 40px;
-            fill: white;
-            margin-left: 6px;
-        }
+    width: 40px !important;
+    height: 40px !important;
+    fill: white !important;
+    margin-left: 6px;
+    display: block;
+}
         
         /* Caption */
         .play-caption {
