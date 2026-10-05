@@ -270,22 +270,13 @@
         }
         
         /* Play Button */
-        .play-button-modern {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #FF3B3B 0%, #CC0000 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 
-                0 0 40px rgba(255, 59, 59, 0.6),
-                0 0 80px rgba(255, 59, 59, 0.3);
-            transition: all 0.3s ease;
-            animation: pulsePlay 2s infinite;
-            cursor: pointer;
-            margin: 0 auto 20px;
-        }
+       .play-button-modern svg {
+    width: 40px !important;
+    height: 40px !important;
+    fill: white !important;
+    margin-left: 6px;
+    display: block;
+}
         
         @keyframes pulsePlay {
             0%, 100% { box-shadow: 0 0 40px rgba(255, 59, 59, 0.6), 0 0 80px rgba(255, 59, 59, 0.3); }
@@ -589,9 +580,11 @@
                 <!-- PLAYER BACKGROUND -->
                 <div class="player-bg" id="playerBg">
                     <div class="player-bg-content">
-                        <div class="play-button-modern" onclick="startVideo()">
-                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
+                     <div class="play-button-modern" onclick="startVideo()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="white">
+        <path d="M8 5v14l11-7z"/>
+    </svg>
+</div>
                         <p class="play-caption">▶ CLICK PLAY TO VIEW</p>
                     </div>
                 </div>
